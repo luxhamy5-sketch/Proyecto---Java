@@ -1,0 +1,33 @@
+MANUAL DE USUARIO
+Sistema de inventario y ventas
+
+INICIO
+Ejecute vista.ventanaPrincipal. Aparecerá el menú con las opciones Productos, Clientes, Empleados, Bodegas, Inventario, Órdenes y ventas, Ver todos los datos y Salir.
+
+1. PRODUCTOS
+Entre en Productos y seleccione Registrar. Ingrese código, nombre, descripción, marca y precio. También puede consultar la lista, modificar el precio o eliminar un producto.
+
+2. CLIENTES
+Entre en Clientes y seleccione Registrar. Ingrese DPI, nombre, dirección, fecha de nacimiento y tipo Regular o VIP. Puede consultar o eliminar clientes.
+
+3. EMPLEADOS
+Entre en Empleados y registre ID, nombre, DPI, dirección, puesto y salario. También puede consultar o eliminar registros.
+
+4. BODEGAS
+Registre primero al menos un empleado. Luego ingrese a Bodegas, seleccione Registrar, escriba el ID, elija al encargado, indique la capacidad y la dirección.
+
+5. INVENTARIO
+Seleccione Inventario y luego Agregar existencia. Elija el producto e indique la cantidad. En Ver existencias puede revisar los productos y sus cantidades. Retirar existencia permite disminuir manualmente una cantidad, siempre que haya suficiente stock.
+
+6. ÓRDENES Y VENTAS
+Para crear una orden debe existir por lo menos un cliente, un producto y existencias registradas. Seleccione Crear orden, elija al cliente, agregue un producto y su cantidad. Puede agregar más productos. Al terminar se muestra el total y la orden queda Pendiente.
+
+Para registrar la venta y descontar las existencias, entre a Completar orden e ingrese el código mostrado al crearla (por ejemplo ORD-1). El sistema revisará el stock y, si alcanza, completará la venta y actualizará el inventario.
+
+Si no desea realizar una orden pendiente, seleccione Cancelar orden e ingrese su código. La cancelación no descuenta productos.
+
+7. CONSULTAS Y CIERRE
+Ver órdenes muestra las órdenes registradas. Ver todos los datos presenta un resumen de registros. Use Salir para cerrar la ventana. Los datos quedan guardados automáticamente en la carpeta datos.
+
+CONSEJO
+Si una venta no se puede completar, revise las existencias y agregue más unidades desde Inventario.

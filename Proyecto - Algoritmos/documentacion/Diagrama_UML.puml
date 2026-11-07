@@ -1,0 +1,23 @@
+@startuml
+class Producto { -codigo:String -nombre:String -descripcion:String -marca:String -precio:double }
+class Cliente { -dpi:String -nombre:String -direccion:String -fechaNacimiento:String -tipo:String }
+class empleado { -idEmpleado:String -nombre:String -dpi:String -direccion:String -puesto:String -salario:double }
+class bodega { -idBodega:String -empleadoEncargado:empleado -capacidad:double -direccion:String }
+class inventario { -bodega:bodega -listaproductos:List<Producto> -cantidadporproducto:List<Integer> +agregarStock() +consultarCantidad() +retirarStock() }
+class DetalleOrden { -producto:Producto -cantidad:int +getSubtotal():double }
+class ordencompra { -idOrden:String -cliente:String -fecha:String -estado:String -total:double -detalles:List<DetalleOrden> +agregarDetalle() +calcularTotal() }
+class archivoUtil { +guardarDatos() +leerDatos() }
+class ventanaPrincipal
+bodega --> empleado
+inventario --> bodega
+inventario "1" o-- "*" Producto
+DetalleOrden --> Producto
+ordencompra "1" o-- "1..*" DetalleOrden
+ventanaPrincipal ..> archivoUtil
+ventanaPrincipal ..> Producto
+ventanaPrincipal ..> Cliente
+ventanaPrincipal ..> empleado
+ventanaPrincipal ..> bodega
+ventanaPrincipal ..> inventario
+ventanaPrincipal ..> ordencompra
+@enduml

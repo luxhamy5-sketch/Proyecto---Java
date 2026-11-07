@@ -1,0 +1,50 @@
+MANUAL TÉCNICO
+Sistema de inventario y ventas
+
+1. OBJETIVO
+Desarrollar una aplicación de escritorio en Java que permita administrar productos, clientes, empleados, bodegas, inventario y órdenes de compra/venta.
+
+2. TECNOLOGÍAS
+- Java: lenguaje de programación.
+- Swing: ventanas, botones y cuadros de diálogo.
+- Serializable: permite guardar objetos Java en archivos.
+- ObjectOutputStream y ObjectInputStream: escriben y leen los archivos de datos.
+
+3. ORGANIZACIÓN DEL PROGRAMA
+El proyecto está separado en tres paquetes:
+- modelo: contiene las clases que representan los datos del sistema.
+- datos: contiene archivoUtil, que guarda y recupera listas de objetos.
+- vista: contiene ventanaPrincipal, donde se muestran las opciones y se realizan las operaciones.
+
+4. CLASES PRINCIPALES
+Producto: código, nombre, descripción, marca y precio.
+Cliente: DPI, nombre, dirección, fecha de nacimiento y tipo.
+empleado: identificación, nombre, DPI, dirección, puesto y salario.
+bodega: identificación, empleado encargado, capacidad y dirección.
+inventario: bodega, lista de productos y cantidad disponible de cada producto. Incluye métodos para agregar, consultar y retirar existencias.
+DetalleOrden: producto y cantidad solicitada; calcula el subtotal.
+ordencompra: identificación, cliente, fecha, detalles, total, estado y control de descuento de inventario.
+archivoUtil: métodos genéricos guardarDatos y leerDatos.
+ventanaPrincipal: conecta las opciones gráficas con las operaciones del sistema.
+
+5. PERSISTENCIA
+Cada grupo de datos se guarda en un archivo independiente dentro de la carpeta datos: productos.dat, clientes.dat, empleados.dat, bodegas.dat, inventarios.dat y ordenes.dat. Al iniciar, el programa lee esos archivos; al registrar o modificar información, guarda nuevamente la lista completa.
+
+6. REGLAS DE NEGOCIO
+- No se permite registrar dos productos con el mismo código ni dos clientes con el mismo DPI.
+- Una orden debe incluir por lo menos un producto.
+- El total se calcula sumando precio por cantidad de cada detalle.
+- Una orden pendiente puede completarse o cancelarse.
+- Antes de completar una venta se verifica que exista suficiente cantidad para todos los productos.
+- Al completar la venta se descuenta el inventario y se cambia el estado a Completada.
+- Una orden ya procesada no puede volver a descontar existencias.
+- Cancelar una orden pendiente no modifica el inventario.
+
+7. COMPILACIÓN
+Desde la carpeta raíz del proyecto:
+  javac -encoding UTF-8 -d build src/modelo/*.java src/datos/*.java src/vista/*.java
+Ejecución:
+  java -cp build vista.ventanaPrincipal
+
+8. RECOMENDACIÓN DE RESPALDO
+Copiar periódicamente la carpeta datos para conservar una copia de los registros. No editar manualmente los archivos .dat.
